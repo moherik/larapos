@@ -53,7 +53,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'email' => 'kasir@mail.com',
             'password' => Hash::make("kasir"),
             'email_verified_at' => Carbon::now(),
-            'phone' => '082000000222',
+            'phone' => '082000000111',
             'is_active' => true,
         ]);
         $cashier->assignRole($cashierRole);
@@ -72,10 +72,10 @@ class RolesAndPermissionsSeeder extends Seeder
         $superAdmin = \App\Models\User::create([
             'first_name' => 'Super',
             'last_name' => 'Admin',
-            'email' => 'superadmin@mail.com',
-            'password' => Hash::make("superadmin"),
+            'email' => 'admin@mail.com',
+            'password' => Hash::make("admin"),
             'email_verified_at' => Carbon::now(),
-            'phone' => '082000000222',
+            'phone' => '082000000333',
             'is_active' => true,
         ]);
         $superAdmin->assignRole($ownerRole);

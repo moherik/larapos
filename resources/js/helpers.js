@@ -13,3 +13,16 @@ export function can(permission, permissionList) {
 
     return list.findIndex((val) => val.name == permission) != -1;
 }
+
+export function strToSlug(str) {
+    if (str == "" || str == null) {
+        return str;
+    }
+
+    return str
+        .toLowerCase()
+        .trim()
+        .replace(/[^\w\s-]/g, "")
+        .replace(/[\s_-]+/g, "-")
+        .replace(/^-+|-+$/g, "");
+}

@@ -25,11 +25,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::as('product.')->prefix('product')->group(function() {
         Route::resource("category", ProductCategoryController::class)->middleware(["permission:produk kategori"]);
         Route::resource("unit", ProductUnitController::class)->middleware(["permission:satuan"]);
-        Route::resource("brand", ProductBrandController::class)->middleware(["permission:merek"]);
-        
-        Route::resource("", ProductController::class)->middleware(["permission:produk"]);
+        Route::resource("brand", ProductBrandController::class)->middleware(["permission:merek"]);        
     });
-    
+
+    Route::resource("product", ProductController::class)->middleware(["permission:produk"]);
 });
 
 Route::middleware('auth')->group(function () {

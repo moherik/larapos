@@ -12,6 +12,13 @@ class ProductCategory extends Model
 {
     use HasFactory, InteractsWithMedia;
 
+    protected $fillable = ["name", "slug", "description", "parent_id"];
+
+    public function parent()
+    {
+        return $this->belongsTo(ProductCategory::class, 'parent_id');
+    }
+
     public function registerMediaConversions(Media $media = null): void
     {
         $this

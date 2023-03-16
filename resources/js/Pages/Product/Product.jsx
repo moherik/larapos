@@ -1,10 +1,10 @@
 import { Head } from "@inertiajs/react";
 import { IoAddSharp, IoCubeOutline } from "react-icons/io5";
-import DataTable from "react-data-table-component";
 
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Header from "@/Components/Header";
+import DatatableCustom from "@/Components/DatatableCustom";
 
 const title = "Data Produk";
 
@@ -33,13 +33,6 @@ export default function Product({ auth, errors }) {
         },
     ];
 
-    const action = (
-        <PrimaryButton>
-            <IoAddSharp size={18} />
-            &nbsp;Tambah
-        </PrimaryButton>
-    );
-
     return (
         <AuthenticatedLayout
             auth={auth}
@@ -48,7 +41,11 @@ export default function Product({ auth, errors }) {
                 <Header
                     icon={<IoCubeOutline />}
                     title={title}
-                    action={action}
+                    action={
+                        <PrimaryButton icon={<IoAddSharp size={18} />}>
+                            Tambah
+                        </PrimaryButton>
+                    }
                 />
             }
         >
@@ -56,8 +53,8 @@ export default function Product({ auth, errors }) {
 
             <div className="py-12">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                        <DataTable columns={columns} data={data} />
+                    <div className="bg-white shadow sm:rounded-lg overflow-hidden">
+                        <DatatableCustom columns={columns} data={data} />
                     </div>
                 </div>
             </div>
