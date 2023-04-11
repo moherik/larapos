@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 .ecuLIP {
-  padding: inherit;
-  background: none;
+    padding: inherit;
+    background: none;
+}
+
+.grid-autofill {
+    grid-template-columns: repeat(3, 1fr);
 }

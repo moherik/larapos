@@ -55,19 +55,27 @@ export default function ProductCategory({ auth, errors, categories, parents }) {
     }
 
     const handleOnChange = (event) => {
+        let value = "";
+        switch (event.target.type) {
+            case "checkbox":
+                value = event.target.checked;
+                break;
+            case "file":
+                value = event.target.files[0];
+                break;
+            default:
+                value = event.target.value;
+                break;
+        }
+
         if (event.target.name == "name") {
             setData({
                 ...data,
-                name: event.target.value,
+                name: value,
                 slug: strToSlug(event.target.value),
             });
         } else {
-            setData(
-                event.target.name,
-                event.target.type === "checkbox"
-                    ? event.target.checked
-                    : event.target.value
-            );
+            setData(event.target.name, value);
         }
     };
 
@@ -313,7 +321,7 @@ export default function ProductCategory({ auth, errors, categories, parents }) {
                                 name="icon"
                                 value={data.icon}
                                 className="mt-1 block w-full"
-                                onChange={() => {}}
+                                onChange={handleOnChange}
                             />
 
                             <InputError
